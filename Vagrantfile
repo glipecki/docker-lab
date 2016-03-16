@@ -16,7 +16,12 @@ Vagrant.configure(2) do |config|
     service docker start
   SHELL
 
+  config.vm.define "toolbox", primary: true do |toolbox|
+    # registry, apache lb, etc
+  end
+
   config.vm.define "devbox", primary: true do |devbox|
+    # for developer
   end
 
   config.vm.define "swarm01" do |swarm01|
