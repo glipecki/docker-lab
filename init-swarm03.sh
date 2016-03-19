@@ -14,4 +14,6 @@ docker run -d --restart=always -h swarm03 -v /var/consul:/data \
 
 docker run -d --restart=always toolbox:5000/swarm join --addr=192.168.7.103:2375 consul://192.168.7.103:8500
 
+docker run -d --restart=always --name=registrator --net=host --volume=/var/run/docker.sock:/tmp/docker.sock toolbox:5000/registrator consul://192.168.7.103:8500
+
 echo "END: init-swarm03"

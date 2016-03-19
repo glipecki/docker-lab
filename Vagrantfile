@@ -26,6 +26,7 @@ Vagrant.configure(2) do |config|
     toolbox.vm.network "private_network", ip: "192.168.7.100",
       virtualbox__intnet: "docker-lab-network"
     toolbox.vm.network "forwarded_port", guest: 8500, host: 8500
+    toolbox.vm.network "forwarded_port", guest: 80, host: 8000
     toolbox.vm.provision "shell", path: "init-common.sh"
     toolbox.vm.provision "shell", path: "init-toolbox.sh"
   end
