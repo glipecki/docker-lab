@@ -1,7 +1,7 @@
 echo "START: init-swarm03"
 
 mkdir -p /var/consul
-docker run -d -h swarm03 -v /var/consul:/data \
+docker run -d --restart=always -h swarm03 -v /var/consul:/data \
     -p 192.168.7.103:8300:8300 \
     -p 192.168.7.103:8301:8301 \
     -p 192.168.7.103:8301:8301/udp \
@@ -12,6 +12,6 @@ docker run -d -h swarm03 -v /var/consul:/data \
     -p 192.168.7.103:53:53/udp \
     toolbox:5000/progrium-consul -server -advertise 192.168.7.103 -join 192.168.7.100
 
-docker run -d toolbox:5000/swarm join --addr=192.168.7.103:2375 consul://192.168.7.103:8500
+docker run -d --restart=always toolbox:5000/swarm join --addr=192.168.7.103:2375 consul://192.168.7.103:8500
 
 echo "END: init-swarm03"
