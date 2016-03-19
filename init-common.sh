@@ -17,7 +17,7 @@ Requires=docker.socket
 
 [Service]
 Type=notify
-ExecStart=/usr/bin/docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock -H fd:// --insecure-registry 192.168.7.100:5000
+ExecStart=/usr/bin/docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock -H fd:// --insecure-registry toolbox:5000
 MountFlags=slave
 LimitNOFILE=1048576
 LimitNPROC=1048576
